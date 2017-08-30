@@ -1,0 +1,25 @@
+class Student extends Person{
+    private int[] scores;
+    
+    
+    Student(String first, String last, int id, int[] scores){
+        super(first, last, id);
+        this.scores = scores;
+    }
+	
+    public char calculate(){
+        int total = 0;
+
+        for (int score : scores) total += score;
+
+        int avg = total / scores.length;
+
+        if (avg >= 90 && avg <= 100) return 'O';
+        if (avg >= 80 && avg < 90) return 'E';
+        if (avg >= 70 && avg < 80) return 'A';
+        if (avg >= 55 && avg < 70) return 'P';
+        if (avg >= 40 && avg < 55) return 'D';
+        return 'T';
+    }
+
+}
