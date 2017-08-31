@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.lang.StringBuilder;
+
+public class Solution {
+    public static int numberNeeded(String first, String second) {
+        int[] letters = new int[26];
+		
+        for(char letter : first.toCharArray()){
+			    letters[letter-'a']++;
+		    }
+		    for(char letter : second.toCharArray()){
+			    letters[letter-'a']--;
+		    }
+		
+        int acum = 0;
+		
+        for(int letter : letters){
+			    acum += Math.abs(letter);
+		    }
+		    
+        return acum;
+    }
+  
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String a = in.next();
+        String b = in.next();
+        System.out.println(numberNeeded(a, b));
+    }
+}
