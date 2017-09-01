@@ -1,0 +1,18 @@
+//Write your code here
+class myException extends Exception{
+    @Override
+    public String getMessage(){
+       return "n and p should be non-negative";
+    }
+}
+
+class Calculator{
+    
+    int power(int base, int power) throws myException{
+        if(base >= 0 && power >= 0){
+            return (int)Math.pow(base,power);
+        }else{
+            throw new myException();
+        }
+    }
+}
