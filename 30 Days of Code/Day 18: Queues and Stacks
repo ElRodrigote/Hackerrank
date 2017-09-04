@@ -1,0 +1,21 @@
+public class Solution {
+    // Write your code here.
+    
+    LinkedList queue = new LinkedList();
+    LinkedList stack = new LinkedList();
+    
+    void pushCharacter(char ch){
+        stack.addFirst(ch);
+    }
+    
+    void enqueueCharacter(char ch){
+        queue.addLast(ch);
+    }
+    
+    char popCharacter(){
+        return (char) stack.removeFirst();
+    }
+    
+    char dequeueCharacter(){
+        return (char) queue.removeFirst();
+    }
