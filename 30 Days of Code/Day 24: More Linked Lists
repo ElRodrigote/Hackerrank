@@ -1,0 +1,12 @@
+    public static Node removeDuplicates(Node head) {
+      //Write your code here
+        if(head == null) return head;
+        
+        while(head.next != null){
+            if(head.data == head.next.data){return removeDuplicates(head.next);}
+            System.out.print(head.data + " ");
+            head = head.next;
+        }
+        
+        return head;
+    }
