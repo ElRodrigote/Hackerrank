@@ -1,0 +1,36 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner in = new Scanner(System.in);
+        
+        int fee = 0;
+        
+        int day1 = in.nextInt();
+        int mon1 = in.nextInt();
+        int yea1 = in.nextInt();
+        
+        int day2 = in.nextInt();
+        int mon2 = in.nextInt();
+        int yea2 = in.nextInt();
+        
+        in.close();
+        
+        if (yea1 > yea2){
+            fee = 10000;
+        }else if(yea1 == yea2){
+            if(mon1 > mon2){
+                fee = 500*(mon1-mon2);
+            }else if(mon1 == mon2){
+                if(day1 > day2){
+                    fee = 15*(day1-day2);
+                }
+            }
+        }
+        
+        System.out.println(fee);
+    }
+}
