@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        
+        String myRegex = ".+@gmail\\.com";
+        Pattern myPattern = Pattern.compile(myRegex);
+        ArrayList<String> myList = new ArrayList<>();
+        
+        for(int i=0; i < n; i++){
+            String fName = in.next();
+            String ID_email = in.next();
+            
+            Matcher myMatcher = myPattern.matcher(ID_email);
+            
+            if(myMatcher.find()){
+                myList.add(fName);
+            }
+        }
+        
+        Collections.sort(myList);
+        
+        for(String firstName: myList){
+            System.out.println(firstName);
+        }
+       
+    }
+}
