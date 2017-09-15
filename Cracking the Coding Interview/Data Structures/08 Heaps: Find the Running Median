@@ -1,0 +1,51 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.util.Arrays;
+
+public class Solution {
+    static Queue<Integer> minHeap = new PriorityQueue<Integer>(Comparator.reverseOrder());
+    static Queue<Integer> maxHeap = new PriorityQueue<Integer>();
+    
+    public static void heapify(){
+        if(minHeap.size() != 0 
+           && maxHeap.size() != 0 
+           && minHeap.peek() > maxHeap.peek())
+        {
+            int max = minHeap.poll();
+            int min = maxHeap.poll();
+            minHeap.add(min);
+            maxHeap.add(max);
+            
+        }
+    }
+    
+    public static  void add(int index)
+    {
+        Queue<Integer> aux = minHeap.size() <= maxHeap.size() ? minHeap : maxHeap;
+        aux.add(index);
+        heapify();
+    }
+        
+    public static float median()
+    {
+       return (minHeap.size() == maxHeap.size()) ? 
+           ((float)(minHeap.peek() + maxHeap.peek())) / 2 
+           : 
+            minHeap.peek(); 
+    }
+    
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int number = 0;
+        
+        for(int a_i=0; a_i < n; a_i++){
+            number = in.nextInt();
+            add(number);
+            System.out.println(median());
+        }
+    }
+}
