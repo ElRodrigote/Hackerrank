@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    static int countSwaps(int[] a){
+        int swaps = 0;
+        
+        for (int i = 0; i < a.length; i++) {
+            int numberOfSwaps = 0;
+            
+            for (int j = 0; j < a.length-1; j++) {
+                // Swap adjacent elements if they are in decreasing order
+                if (a[j] > a[j + 1]) {
+                    swap(a, j, j+1);
+                    numberOfSwaps++;
+                    swaps++;
+                }
+            }
+
+            // If no elements were swapped during a traversal, array is sorted
+            if (numberOfSwaps == 0) {
+                break;
+            }
+        }
+        
+        return swaps;
+    }
+    
+    static void swap(int[] array, int a, int b){
+        int aux = array[a];
+        array[a] = array[b];
+        array[b] = aux;
+    }
+    
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt(); 
+        int[] a = new int[n];
+        
+        for(int i = 0; i < n; i++){
+            a[i] = in.nextInt();
+        }
+        
+        in.close();
+        
+        int swaps = countSwaps(a);
+        
+        System.out.printf("Array is sorted in %d swaps.\n", swaps);
+		System.out.printf("First Element: %d \n", a[0]);
+		System.out.printf("Last Element: %d \n", a[a.length-1]);
+    }
+}
